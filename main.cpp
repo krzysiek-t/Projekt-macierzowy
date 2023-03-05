@@ -4,7 +4,7 @@
 #include "MathVector.h"
 #include "MathMatrix.h"
 #include <string>
-#include <iostream>
+//#include <iostream>
 
 using namespace std;
 //	******************************************************************************************

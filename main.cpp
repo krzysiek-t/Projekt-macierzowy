@@ -4,6 +4,7 @@
 #include "MathVector.h"
 #include "MathMatrix.h"
 #include <string>
+#include <iostream>
 
 using namespace std;
 //	******************************************************************************************
@@ -23,7 +24,7 @@ int main()
 		cout << "Wybierz opcje: " << endl;
 		cout << "1 - Liczenie normy wektora" << endl;
 		cout << "2 - Liczenie normy macierzy" << endl;
-		cout << "3 - Mnozenie macierz x maierz" << endl;
+		cout << "3 - Mnozenie macierz x macierz" << endl;
 		cout << "4 - Mnozenie macierz x wektor" << endl;
 		cout << "5 - Liczenie macierzy trojkatnej dolnej L" << endl;
 		cout << "6 - Liczenie macierzy trojkatnej Gornej U" << endl;
@@ -100,8 +101,10 @@ int main()
 				cout << "Trzecia norma: " << V.uniform_norm() << endl;
 			}
 			catch (exception& e) { error(e); }
+			
 				option3 = save_question();
-				if (option3 == 'y' || option3 == 'Y')
+				
+				if (option3 == 't' || option3 == 'T')
 				{
 					ofs << "Normy wynosza:" << endl;
 					ofs << "Pierwsza norma: " << V.one_norm() << endl;
@@ -115,7 +118,7 @@ int main()
 				cout << "Druga norma: " << M1.two_norm() << endl;
 				cout << "Trzecia norma: " << M1.uniform_norm() << endl;
 				option3 = save_question();
-				if (option3 == 'y' || option3 == 'Y')
+				if (option3 == 't' || option3 == 'T')
 				{
 					ofs << "Normy macierzowe wynosza: " << endl;
 					ofs << "Pierwsza norma: " << M1.one_norm() << endl;
@@ -131,7 +134,7 @@ int main()
 			}
 			catch (exception& e) { error(e); }
 			option3 = save_question();
-			if (option3 == 'y' || option3 == 'Y')
+			if (option3 == 't' || option3 == 'T')
 			{
 				ofs << "Wynik mnozenia macierz x macierz: " << endl;
 				ofs << M1*M2 << endl;
@@ -145,7 +148,7 @@ int main()
 			}
 			catch (exception& e) { error(e); }
 			option3 = save_question();
-			if (option3 == 'y' || option3 == 'Y')
+			if (option3 == 't' || option3 == 'T')
 			{
 				ofs << "Wynik mnozenia macierz x wektor: " << endl;
 				ofs << M1*V << endl;
@@ -160,7 +163,7 @@ int main()
 			}
 			catch (exception& e) { error(e); }
 			option3 = save_question();
-			if (option3 == 'y' || option3 == 'Y')
+			if (option3 == 't' || option3 == 'T')
 			{
 				ofs << "Macierz trojkatna dolna L: " << endl;
 				ofs << M1.compute_lower() << endl;
@@ -175,7 +178,7 @@ int main()
 			}
 			catch (exception& e) { error(e); }
 			option3 = save_question();
-			if (option3 == 'y' || option3 == 'Y')
+			if (option3 == 't' || option3 == 'T')
 			{
 				ofs << "Macierz trojkatna gorna U" << endl;
 				ofs << M1.compute_upper() << endl;
@@ -189,7 +192,7 @@ int main()
 			}
 			catch (exception& e) { error(e); }
 			option3 = save_question();
-			if (option3 == 'y' || option3 == 'Y')
+			if (option3 == 't' || option3 == 'T')
 			{
 				ofs << "Macierz odwrotna: " << endl;
 				ofs << M1.inverse() << endl;
@@ -203,7 +206,7 @@ int main()
 			}
 			catch (exception& e) { error(e); }
 			option3 = save_question();
-			if (option3 == 'y' || option3 == 'Y')
+			if (option3 == 't' || option3 == 'T')
 			{
 				ofs << "Wyznacznik macierzy: " << endl;
 				ofs << M1.condition_num() << endl;
@@ -217,7 +220,7 @@ int main()
 			}
 			catch (exception& e) { error(e); }
 			option3 = save_question();
-			if (option3 == 'y' || option3 == 'Y')
+			if (option3 == 't' || option3 == 'T')
 			{
 				ofs << "Rozmiar macierzy wynosi: " << endl;
 				ofs << M1.get_size() << endl;
@@ -243,9 +246,7 @@ MathVector create_vector(int opt)
 	{
 		if (opt == 1)
 		{
-			MathVector v;
-			cin >> v;
-			v1 = v;
+			cin >> v1;
 		}
 		else if (opt == 2)
 		{
@@ -270,9 +271,7 @@ MathMatrix create_matrix(int opt)
 	{
 		if (opt == 1)
 		{
-			MathMatrix m;
-			cin >> m;
-			m1 = m;
+			cin >> m1;
 		}
 		else if (opt == 2)
 		{
@@ -306,11 +305,12 @@ char save_question()
 {
 	char k;
 	do{
-		cout << "Czy chcesz zapisac wyniki do pliku ? <Y/N>";
-		cin >> k; if (k == 'y' || k == 'Y' || k == 'n' || k == 'N')
+		cout << "Czy chcesz zapisac wyniki do pliku ? <T/N>";
+		cin >> k; 
+		if (k == 't' || k == 'T' || k == 'n' || k == 'N')
 		{
 			return k;
 		}
-	} while (!(k == 'y' || k == 'Y' || k == 'n' || k == 'N'));
+	} while (!(k == 't' || k == 'T' || k == 'n' || k == 'N'));
 }
 //	******************************************************************************************
